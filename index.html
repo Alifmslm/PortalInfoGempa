@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Info Gempa Indonesia</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#1e3a8a',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <header class="bg-brand text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <h1 class="text-xl font-bold tracking-tight">InfoGempa Indonesia</h1>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        
+        <section class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+            <div class="flex bg-slate-100 p-1 rounded-lg border border-slate-200 w-full md:w-auto overflow-x-auto">
+                <button id="btn-terkini" class="px-4 py-2 text-sm font-medium rounded-md bg-white text-brand shadow-sm border border-slate-200 whitespace-nowrap">Terkini</button>
+                <button id="btn-m5" class="px-4 py-2 text-sm font-medium rounded-md text-slate-600 hover:text-brand hover:bg-slate-50 transition whitespace-nowrap">M 5.0+</button>
+                <button id="btn-dirasakan" class="px-4 py-2 text-sm font-medium rounded-md text-slate-600 hover:text-brand hover:bg-slate-50 transition whitespace-nowrap">Dirasakan</button>
+            </div>
+        </section>
+
+        <section class="mb-8 bg-white p-2 rounded-xl shadow-sm border border-slate-200 relative z-0">
+            <div id="map" class="h-[350px] md:h-[450px] w-full rounded-lg bg-slate-200"></div>
+        </section>
+
+        <section>
+            <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                Daftar Gempa
+            </h2>
+            
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-x-auto">
+                <table class="w-full text-left border-collapse whitespace-nowrap md:whitespace-normal min-w-[800px]">
+                    <thead>
+                        <tr class="bg-brand text-white text-sm border-b border-slate-200">
+                            <th class="p-4 font-semibold text-center w-12">#</th>
+                            <th class="p-4 font-semibold">Waktu</th>
+                            <th class="p-4 font-semibold text-center">Magnitudo</th>
+                            <th class="p-4 font-semibold text-center">Kedalaman</th>
+                            <th class="p-4 font-semibold text-center">Koordinat</th>
+                            <th class="p-4 font-semibold">Wilayah</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gempa-tbody" class="text-sm text-slate-700 divide-y divide-slate-100">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
